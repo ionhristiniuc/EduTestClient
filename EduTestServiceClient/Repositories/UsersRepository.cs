@@ -1,6 +1,5 @@
 ﻿using EduTestServiceClient.DTO;
 using RestSharp;
-using RestSharp.Authenticators;
 
 namespace EduTestServiceClient.Repositories
 {

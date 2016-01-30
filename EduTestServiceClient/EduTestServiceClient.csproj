@@ -59,6 +59,7 @@
     <Compile Include="DTO\AuthenticationResponse.cs" />
     <Compile Include="DTO\Chapter.cs" />
     <Compile Include="DTO\Course.cs" />
+    <Compile Include="DTO\Environment.cs" />
     <Compile Include="DTO\Items.cs" />
     <Compile Include="DTO\Module.cs" />
     <Compile Include="DTO\PostResponse.cs" />
@@ -78,10 +79,12 @@
     <Compile Include="Repositories\IGenericRepository.cs" />
     <Compile Include="Repositories\IModulesRepository.cs" />
     <Compile Include="Repositories\IQuestionsRepository.cs" />
+    <Compile Include="Repositories\ITestsRepository.cs" />
     <Compile Include="Repositories\ITopicsRepository.cs" />
     <Compile Include="Repositories\IUsersRepository.cs" />
     <Compile Include="Repositories\ModulesRepository.cs" />
     <Compile Include="Repositories\QuestionsRepository.cs" />
+    <Compile Include="Repositories\TestsRepository.cs" />
     <Compile Include="Repositories\TopicsRepository.cs" />
     <Compile Include="Repositories\UsersRepository.cs" />
     <Compile Include="Utils\IgnoreAttribute.cs" />

@@ -9,8 +9,8 @@ namespace EduTestServiceClient.Repositories
 {
     public class QuestionsRepository : GenericRepository<Question>, IQuestionsRepository
     {
-        public QuestionsRepository(string serviceUrl, string basePath, IAuthenticationService authenticator)
-            : base(serviceUrl, basePath, authenticator)
+        public QuestionsRepository(string serviceUrl, IAuthenticationService authenticator)
+            : base(serviceUrl, "questions", authenticator)
         {
         }
     }
