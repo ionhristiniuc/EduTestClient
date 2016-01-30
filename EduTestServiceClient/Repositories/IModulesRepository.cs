@@ -2,7 +2,7 @@
 
 namespace EduTestServiceClient.Repositories
 {
-    public interface IModulesReopsitory : IGenericRepository<Module>
+    public interface IModulesRepository : IGenericRepository<Module>
     {
          
     }

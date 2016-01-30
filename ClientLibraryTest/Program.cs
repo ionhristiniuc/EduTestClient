@@ -26,7 +26,7 @@ namespace ClientLibraryTest
                 Console.WriteLine("Failed to authenticate!");
 
             _coursesRepository = new CoursesRepository("http://192.168.56.22/app_dev.php", 
-                "courses", authenticationService);
+                authenticationService);
 
 
             int courseId = AddCourse();
@@ -63,7 +63,7 @@ namespace ClientLibraryTest
 
             try
             {                
-                return _coursesRepository.Add(course);
+                return _coursesRepository.Add(course).Value;
             }
             catch (Exception e)
             {

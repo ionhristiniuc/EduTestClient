@@ -3,10 +3,10 @@ using RestSharp.Authenticators;
 
 namespace EduTestServiceClient.Repositories
 {
-    public class ModulesRepository : GenericRepository<Module>, IGenericRepository<Module>
+    public class ModulesRepository : GenericRepository<Module>, IModulesRepository
     {
-        public ModulesRepository(string serviceUrl, string basePath, IAuthenticationService authenticator)
-            : base(serviceUrl, basePath, authenticator)
+        public ModulesRepository(string serviceUrl, IAuthenticationService authenticator)
+            : base(serviceUrl, "modules", authenticator)
         {
         }
     }

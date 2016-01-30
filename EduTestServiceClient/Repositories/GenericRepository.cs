@@ -14,7 +14,7 @@ namespace EduTestServiceClient.Repositories
     {
         public string ServiceUrl { get; set; }      // ex: http://192.168.56.22/app_dev.php
         public string BasePath { get; set; }        // ex: users       
-        private IRestClient Client { get; }
+        protected IRestClient Client { get; }
 
         public GenericRepository(string serviceUrl, string basePath, IAuthenticationService authenticator)
         {
@@ -47,7 +47,7 @@ namespace EduTestServiceClient.Repositories
             return response.Data;
         }
 
-        public int Add(T entity)
+        public int? Add(T entity)
         {            
             var request = new RestRequest($"{BasePath}", Method.POST);
             request.AddObject(entity, GetIncludedProperties(entity));
@@ -69,12 +69,14 @@ namespace EduTestServiceClient.Repositories
                 throw response.ErrorException;
         }
 
-        public void Remove(int id)
+        public bool Remove(int id)
         {
             var request = new RestRequest($"{BasePath}/{id}", Method.DELETE);
             var response = Client.Delete(request);
             if (response.ErrorException != null)
                 throw response.ErrorException;
+
+            return true;
         }        
 
         protected string[] GetIncludedProperties(T entity)

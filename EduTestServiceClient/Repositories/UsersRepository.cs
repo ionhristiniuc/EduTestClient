@@ -1,14 +1,25 @@
 ﻿using EduTestServiceClient.DTO;
+using RestSharp;
 using RestSharp.Authenticators;
 
 namespace EduTestServiceClient.Repositories
 {
     public class UsersRepository : GenericRepository<User>, IUsersRepository
     {
-        public UsersRepository(string serviceUrl, string basePath, IAuthenticationService authenticator)
-            : base(serviceUrl, basePath, authenticator)
+        public UsersRepository(string serviceUrl, IAuthenticationService authenticator)
+            : base(serviceUrl, "users", authenticator)
         {
 
+        }
+
+        public void AddCourseToUser(int userId, int courseId)
+        {
+            var request = new RestRequest($"{BasePath}/{userId}/courses");
+            request.AddParameter("course", courseId);
+            var response = Client.Execute(request);
+
+            if (response.ErrorException != null)
+                throw response.ErrorException;
         }
     }
 }

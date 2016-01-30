@@ -14,10 +14,10 @@ namespace EduTestServiceClient.Repositories
         /// <returns></returns>
         Items<T> GetList(int page = 0, int perPage = 10);
 
-        int Add(T entity);
+        int? Add(T entity);
 
         void Update(T entity, int id);
 
-        void Remove(int id);
+        bool Remove(int id);
     }
 }

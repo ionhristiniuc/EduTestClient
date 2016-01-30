@@ -1,4 +1,5 @@
-﻿using EduTestServiceClient.DTO;
+﻿using System;
+using EduTestServiceClient.DTO;
 using RestSharp;
 using RestSharp.Authenticators;
 
@@ -45,6 +46,24 @@ namespace EduTestServiceClient.Repositories
 
             AuthResponse = restResponse.Data;
             return int.Parse(AuthResponse.expires_in) > 0;
+        }
+
+        public bool Reauthenticate()
+        {
+            if (AuthResponse == null)
+                throw new InvalidOperationException("Cannot authenticate as refresh_token is missing");
+
+            var request = new RestRequest(AuthPath, Method.POST);
+            request.AddJsonBody(new
+            {
+                client_id = ClientId,
+                client_secret = ClientSecret,
+                grant_type = "password",
+                access_token = AuthResponse.access_token,
+                refresh_token = AuthResponse.refresh_token
+            });
+
+            return true;
         }
     }
 }
