@@ -5,8 +5,8 @@ namespace EduTestServiceClient.Repositories
 {
     public class ModulesRepository : GenericRepository<Module>, IModulesRepository
     {
-        public ModulesRepository(string serviceUrl, IAuthenticationService authenticator)
-            : base(serviceUrl, "modules", authenticator)
+        public ModulesRepository(string serviceUrl, string accessToken)
+            : base(serviceUrl, "modules", accessToken)
         {
         }
     }

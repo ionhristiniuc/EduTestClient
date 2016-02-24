@@ -6,13 +6,7 @@ using RestSharp.Authenticators;
 namespace EduTestServiceClient.Repositories
 {
     public class AuthenticationService : IAuthenticationService
-    {
-        public AuthenticationResponse AuthResponse { get; set; }
-        private IAuthenticator Authenticator =>
-            AuthResponse != null             
-            ? new OAuth2AuthorizationRequestHeaderAuthenticator(AuthResponse.access_token, "Bearer")
-            : null; 
-
+    {               
         public string ServiceUrl { get; set; }
         public string AuthPath { get; set; }
         private string ClientId { get; set; }
@@ -26,9 +20,9 @@ namespace EduTestServiceClient.Repositories
             ClientId = clientId;
             ClientSecret = clientSecret;
             Client = new RestClient(ServiceUrl);
-        }
+        }        
 
-        public bool Authenticate(string username, string password)
+        public AuthenticationResponse Authenticate(string username, string password)
         {
             var request = new RestRequest($"{AuthPath}", Method.POST);
             request.AddJsonBody(new
@@ -44,13 +38,12 @@ namespace EduTestServiceClient.Repositories
             if (restResponse.ErrorException != null)
                 throw restResponse.ErrorException;
 
-            AuthResponse = restResponse.Data;
-            return int.Parse(AuthResponse.expires_in) > 0;
+            return restResponse.Data;            
         }
 
-        public bool Reauthenticate()
+        public AuthenticationResponse Reauthenticate(AuthenticationResponse resp)
         {
-            if (AuthResponse == null)
+            if (resp == null)
                 throw new InvalidOperationException("Cannot authenticate as refresh_token is missing");
 
             var request = new RestRequest(AuthPath, Method.POST);
@@ -59,11 +52,12 @@ namespace EduTestServiceClient.Repositories
                 client_id = ClientId,
                 client_secret = ClientSecret,
                 grant_type = "password",
-                access_token = AuthResponse.access_token,
-                refresh_token = AuthResponse.refresh_token
+                access_token = resp.access_token,
+                refresh_token = resp.refresh_token
             });
 
-            return true;
+            var restResponse = Client.Execute<AuthenticationResponse>(request);
+            return restResponse.Data;
         }
     }
 }

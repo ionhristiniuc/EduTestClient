@@ -43,14 +43,14 @@ namespace TeacherEduTest.SideMenu
 
         private void InitServices()
         {
-            _modulesService = new ModulesRepository(AppConfig.ServiceUrl, _accountService);
-            _chaptersService = new ChaptersRepository(AppConfig.ServiceUrl, _accountService);
-            _topicsService = new TopicsRepository(AppConfig.ServiceUrl, _accountService);
+            //_modulesService = new ModulesRepository(AppConfig.ServiceUrl, _accountService);
+            //_chaptersService = new ChaptersRepository(AppConfig.ServiceUrl, _accountService);
+            //_topicsService = new TopicsRepository(AppConfig.ServiceUrl, _accountService);
         }
 
         private void InitCourses()
         {
-            ICoursesRepository coursesService = new CoursesRepository(AppConfig.ServiceUrl, _accountService);
+            ICoursesRepository coursesService = new CoursesRepository(AppConfig.ServiceUrl, "");//_accountService);
 
             var courses = coursesService.GetList();
 
@@ -81,7 +81,7 @@ namespace TeacherEduTest.SideMenu
         private  void CoursesComboBox_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ICoursesRepository coursesService =
-               new CoursesRepository(AppConfig.ServiceUrl, _accountService);
+                new CoursesRepository(AppConfig.ServiceUrl, "");//_accountService);
 
             Course selectedCourse = coursesService.Get((int)CoursesComboBox.SelectedValue);
 

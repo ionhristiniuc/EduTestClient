@@ -4,6 +4,6 @@ namespace EduTestServiceClient.Repositories
 {
     public interface ICoursesRepository : IGenericRepository<Course>
     {
-         
+        void AddCourseToUser(int userId, int courseId);
     }
 }

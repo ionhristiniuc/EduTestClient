@@ -22,11 +22,16 @@ namespace ClientLibraryTest
                 "secret"
                 );
 
-            if (!authenticationService.Authenticate("test", "test"))
+            var resp = authenticationService.Authenticate("test", "test");
+
+            if (resp == null)
+            {
                 Console.WriteLine("Failed to authenticate!");
+                return;
+            }
 
             _coursesRepository = new CoursesRepository("http://192.168.56.22/app_dev.php", 
-                authenticationService);
+                resp.access_token);
 
 
             int courseId = AddCourse();

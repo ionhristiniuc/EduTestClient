@@ -5,20 +5,10 @@ namespace EduTestServiceClient.Repositories
 {
     public class UsersRepository : GenericRepository<User>, IUsersRepository
     {
-        public UsersRepository(string serviceUrl, IAuthenticationService authenticator)
-            : base(serviceUrl, "users", authenticator)
+        public UsersRepository(string serviceUrl, string accessToken)
+            : base(serviceUrl, "users", accessToken)
         {
 
-        }
-
-        public void AddCourseToUser(int userId, int courseId)
-        {
-            var request = new RestRequest($"{BasePath}/{userId}/courses");
-            request.AddParameter("course", courseId);
-            var response = Client.Execute(request);
-
-            if (response.ErrorException != null)
-                throw response.ErrorException;
-        }
+        }        
     }
 }

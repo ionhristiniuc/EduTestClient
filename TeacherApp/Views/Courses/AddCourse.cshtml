@@ -1,0 +1,29 @@
+﻿@model TeacherApp.Models.CourseModel
+
+@{
+    ViewBag.Title = "Add Course";
+}
+
+<div class="row">
+    <div class="panel panel-default bootstrap-admin-no-table-panel">
+        <div class="panel-heading">
+            <div class="text-muted bootstrap-admin-box-title">Add New Course</div>
+        </div>
+        <div class="bootstrap-admin-no-table-panel-content bootstrap-admin-panel-content collapse in">
+            @using (Html.BeginForm("AddCourse", "Courses", FormMethod.Post, new { @class = "form-horizontal" }))
+            {                
+                <fieldset>
+                    <legend>Add Course</legend>
+                    <div class="form-group">
+                        <label class="col-lg-2 control-label" for="focusedInput">Course name:</label>
+                        <div class="col-lg-10">
+                            <input class="form-control" id="focusedInput" type="text">
+                        </div>
+                    </div>                                                                                
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                    <button type="reset" class="btn btn-default">Cancel</button>
+                </fieldset>
+            }
+        </div>
+    </div>
+</div>

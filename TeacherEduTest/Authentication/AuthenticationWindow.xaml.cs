@@ -42,7 +42,9 @@ namespace TeacherEduTest.Authentication
                 AppConfig.Secret
                 );
 
-                if (authService.Authenticate(username, password))
+                var resp = authService.Authenticate(username, password);
+
+                if (resp == null)
                 {
                     /*IQuestionsRepository questionsService = new QuestionsRepository(authenticationService.AuthResponse.access_token, new JsonSerializer());
                     var question = new VariantQuestionModel()
@@ -62,7 +64,7 @@ namespace TeacherEduTest.Authentication
                     var result = await questionsService.AddQuestion(question.TopicId, question);
                     MessageBox.Show(result.ToString());*/
 
-                    IUsersRepository usersService = new UsersRepository(AppConfig.ServiceUrl, authService);
+                    IUsersRepository usersService = new UsersRepository(AppConfig.ServiceUrl, resp.access_token);
 
                     // TODO should find a method to get logged in user id
                     //User user = usersService.Get();

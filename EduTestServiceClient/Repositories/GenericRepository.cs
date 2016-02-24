@@ -16,14 +16,14 @@ namespace EduTestServiceClient.Repositories
         public string BasePath { get; set; }        // ex: users       
         protected IRestClient Client { get; }
 
-        public GenericRepository(string serviceUrl, string basePath, IAuthenticationService authenticator)
+        public GenericRepository(string serviceUrl, string basePath, string accessToken)
         {
             ServiceUrl = serviceUrl;
             BasePath = basePath;            
             Client = new RestClient(ServiceUrl)
             {
                 Authenticator = new OAuth2AuthorizationRequestHeaderAuthenticator(
-                    authenticator.AuthResponse.access_token, "Bearer")
+                    accessToken, "Bearer")
             };
         }
 

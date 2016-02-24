@@ -11,9 +11,8 @@ namespace EduTestServiceClient.Repositories
     {
         string ServiceUrl { get; }
         string AuthPath { get; }
-        AuthenticationResponse AuthResponse { get; }
 
-        bool Authenticate(string username, string password);
-        bool Reauthenticate();
+        AuthenticationResponse Authenticate(string username, string password);
+        AuthenticationResponse Reauthenticate(AuthenticationResponse resp);
     }
 }

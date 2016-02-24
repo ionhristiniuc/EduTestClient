@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentEduTest", "StudentEd
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeacherEduTest", "TeacherEduTest\TeacherEduTest.csproj", "{D6548BA2-EAF2-4ED6-B47C-001B19617C22}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Student.UI", "Student.UI\Student.UI.csproj", "{95545E4A-E760-4C29-94AE-C7EC6F8DD7DD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeacherApp", "TeacherApp\TeacherApp.csproj", "{F10FFF0F-F366-4452-9821-F4C7BCB63259}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +37,14 @@ Global
 		{D6548BA2-EAF2-4ED6-B47C-001B19617C22}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D6548BA2-EAF2-4ED6-B47C-001B19617C22}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D6548BA2-EAF2-4ED6-B47C-001B19617C22}.Release|Any CPU.Build.0 = Release|Any CPU
+		{95545E4A-E760-4C29-94AE-C7EC6F8DD7DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{95545E4A-E760-4C29-94AE-C7EC6F8DD7DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{95545E4A-E760-4C29-94AE-C7EC6F8DD7DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{95545E4A-E760-4C29-94AE-C7EC6F8DD7DD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F10FFF0F-F366-4452-9821-F4C7BCB63259}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F10FFF0F-F366-4452-9821-F4C7BCB63259}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F10FFF0F-F366-4452-9821-F4C7BCB63259}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F10FFF0F-F366-4452-9821-F4C7BCB63259}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
